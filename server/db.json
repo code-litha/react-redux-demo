@@ -1,0 +1,36 @@
+{
+  "movies": [
+    {
+      "id": 1,
+      "title": "Upin & Ipin",
+      "year": 2007
+    },
+    {
+      "id": 2,
+      "title": "Despicable Me",
+      "year": 2012
+    },
+    {
+      "id": 3,
+      "title": "Despicable Me 2",
+      "year": 2014
+    }
+  ],
+  "users": [
+    {
+      "id": 1,
+      "name": "Rina",
+      "gender": "Female"
+    },
+    {
+      "id": 2,
+      "name": "Rani",
+      "gender": "Female"
+    },
+    {
+      "id": 3,
+      "name": "Roni",
+      "gender": "Male"
+    }
+  ]
+}
