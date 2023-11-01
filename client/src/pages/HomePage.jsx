@@ -1,15 +1,23 @@
-import { useState } from "react";
 import { Container } from "react-bootstrap";
+import { useSelector, useDispatch } from "react-redux";
+import {
+  counterDecrement,
+  counterIncrement,
+} from "../store/actions/actionCreator";
 
 function HomePage() {
-  const [counter, setCounter] = useState(0);
+  const counter = useSelector((state) => {
+    console.log(state, "<<< state");
+    return state.counter.value;
+  });
+  const dispatch = useDispatch();
 
   const increment = () => {
-    setCounter(counter + 1);
+    dispatch(counterIncrement());
   };
 
   const decrement = () => {
-    setCounter(counter - 1);
+    dispatch(counterDecrement());
   };
 
   return (

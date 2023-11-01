@@ -2,10 +2,15 @@ import { Container, Table } from "react-bootstrap";
 import { API_URL } from "../config/api";
 import { useEffect, useState } from "react";
 import MovieRow from "../components/MovieRow";
+import { useSelector, useDispatch } from "react-redux";
+import {
+  movieFetchSuccess,
+  movieLoading,
+} from "../store/actions/actionCreator";
 
 function MoviePage() {
-  const [movies, setMovies] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
+  const { movies, isLoading } = useSelector((state) => state.movie);
+  const dispatch = useDispatch();
 
   useEffect(() => {
     fetchData();
@@ -13,14 +18,14 @@ function MoviePage() {
 
   const fetchData = async () => {
     try {
-      setIsLoading(true);
+      dispatch(movieLoading(true));
       const response = await fetch(`${API_URL}/movies`);
       const responseJSON = await response.json();
-      setMovies(responseJSON);
+      dispatch(movieFetchSuccess(responseJSON));
     } catch (error) {
       console.log(error);
     } finally {
-      setIsLoading(false);
+      dispatch(movieLoading(false));
     }
   };
 
